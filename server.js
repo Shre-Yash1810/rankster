@@ -288,7 +288,7 @@ app.get("/updates", (req, res) => {
 
 
 // Start server
-const PORT = 3000;
+const PORT = 3306 || process.env.PORT || 3306;
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
