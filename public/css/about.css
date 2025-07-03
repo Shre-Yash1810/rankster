@@ -1,0 +1,50 @@
+/* General page styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background:  linear-gradient(to right, #ff003c, #0f0050);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 250vh;
+    text-align: center;
+}
+
+/* Container */
+.container {
+    color: white;
+    max-width: 800px;
+}
+
+/* Page Title */
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* About Box */
+.about-box {
+    background: rgba(0, 0, 0, 0.5); /* Light black transparent box */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+strong {
+    color: red;
+    text-decoration: dotted;
+
+}
+
+/* Text Styling */
+.about-box p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+#btn {
+    text-decoration: none;
+}

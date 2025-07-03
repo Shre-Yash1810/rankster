@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BattleBoard</title>
+  <link rel="stylesheet" href="/css/battleboard.css" />
+</head>
+<body>
+  <div class="back-btn" onclick="window.location.href='/vote'">← Back</div>
+  <div class="nav-logo">Rankster</div>
+  <h1 class="heading">&star;BattleBoard&star;</h1>
+
+  <!-- Gender Toggle -->
+  <div class="gender-toggle">
+    <button onclick="loadBoard('male')" id="maleBtn" class="active">Males</button>
+    <button onclick="loadBoard('female')" id="femaleBtn">Females</button>
+  </div>
+
+  <!-- Profile Cards -->
+  <div class="board-container" id="boardContainer">
+    <!-- Filled by JS -->
+  </div>
+
+  <script>
+    function loadBoard(gender) {
+      // Highlight active button
+      document.getElementById("maleBtn").classList.remove("active");
+      document.getElementById("femaleBtn").classList.remove("active");
+      document.getElementById(gender + "Btn").classList.add("active");
+
+      fetch(`/battleboard-data?gender=${gender}`)
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById("boardContainer");
+          container.innerHTML = "";
+
+          if (!data.success || data.data.length === 0) {
+            container.innerHTML = "<p>No data available yet.</p>";
+            return;
+          }
+
+          data.data.forEach((user, index) => {
+            const card = document.createElement("div");
+            card.className = "profile-card";
+            card.innerHTML = `
+              <div class="rank">#${index + 1}</div>
+              <img src="${user.photo}" alt="Photo" class="profile-img">
+              <div class="info">
+                <h3>${user.username}</h3>
+                <p>College:  ${user.college}</p>
+              </div>
+            `;
+            container.appendChild(card);
+          });
+        });
+    }
+
+    // Load male by default
+    loadBoard("male");
+  </script>
+</body>
+</html>

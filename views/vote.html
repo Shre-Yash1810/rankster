@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rankster Voting</title>
+  <link rel="stylesheet" href="/css/voting.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-item">
+      <a href="/update-profile">Profile</a>
+      <a href="/battleboard">Battleboard</a>
+      <a href="/logout">Logout</a>
+    </div>
+  </nav>
+
+  <!-- Voting Area -->
+  <div class="voting-container">
+    
+    <!-- Top Profile -->
+    <div class="profile-block red" id="top-profile" data-id="">
+      <div class="photo-section">
+        <img src="/default.jpg" class="profile-photo" alt="Top profile photo" />
+        <button class="vote-btn" onclick="vote('top')">Vote</button>
+      </div>
+      <div class="info-section">
+        <p><strong>Username:</strong> <span id="top-username"></span></p> <br>
+        <p><strong>College:</strong> <span id="top-college"></span></p><br>
+        <p><strong>Interest:</strong> <span id="top-interest"></span></p><br>
+        <p id="top-instagram" style="display: none;"><strong>Instagram:</strong> <span></span></p>
+      </div>
+    </div>
+
+    <!-- Bottom Profile -->
+    <div class="profile-block blue" id="bottom-profile" data-id="">
+      <div class="photo-section">
+        <img src="/default.jpg" class="profile-photo" alt="Bottom profile photo" />
+        <button class="vote-btn" onclick="vote('bottom')">Vote</button>
+      </div>
+      <div class="info-section">
+        <p><strong>Username:</strong> <span id="bottom-username"></span></p><br>
+        <p><strong>College:</strong> <span id="bottom-college"></span></p><br>
+        <p><strong>Interest:</strong> <span id="bottom-interest"></span></p><br>
+        <p id="bottom-instagram" style="display: none;"><strong>Instagram:</strong> <span></span></p>
+      </div>
+    </div>
+
+  </div>
+  <script>
+  window.onload = async () => {
+    const res = await fetch("/vote", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ profileId: null }) // ⚠️ Use explicit null
+    });
+    const data = await res.json();
+    if (data.profiles && data.profiles.length === 2) {
+      updateProfile("top", data.profiles[0]);
+      updateProfile("bottom", data.profiles[1]);
+    } else {
+      alert(data.message || "Not enough profiles found.");
+    }
+  };
+
+  async function vote(position) {
+    const votedId = document.getElementById(`${position}-profile`).dataset.id;
+    const topId = document.getElementById("top-profile").dataset.id;
+    const bottomId = document.getElementById("bottom-profile").dataset.id;
+
+    const res = await fetch("/vote", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        profileId: votedId,
+        side: position,
+        topId,
+        bottomId
+      })
+    });
+
+    const data = await res.json();
+    if (data.message) alert(data.message);
+    if (data.replace && data.profile) {
+      updateProfile(data.replace, data.profile);
+    }
+  }
+
+  function updateProfile(position, profile) {
+    const block = document.getElementById(`${position}-profile`);
+    block.dataset.id = profile.id;
+
+    const photo = block.querySelector("img");
+    photo.src = profile.photo.startsWith("/uploads/")
+      ? profile.photo
+      : "/uploads/" + profile.photo;
+
+    document.getElementById(`${position}-username`).textContent = profile.username;
+    document.getElementById(`${position}-college`).textContent = profile.college;
+    document.getElementById(`${position}-interest`).textContent = profile.interest;
+    const insta = document.getElementById(`${position}-instagram`);
+    if (profile.instagram) {
+      insta.style.display = "block";
+      insta.querySelector("span").textContent = "@" + profile.instagram;
+    } else {
+      insta.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>

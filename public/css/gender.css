@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+  background: linear-gradient(to right,#0f0050 , #ff003c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+}
+
+.gender-form {
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  color: #fff;
+}
+
+.gender-options {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.gender-options input[type="radio"] {
+  display: none;
+}
+
+.gender-options .custom-radio {
+  padding: 10px 25px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.gender-options input[type="radio"]:checked + .custom-radio {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+}
+
+.continue-btn {
+  padding: 10px 30px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #e91e63;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.continue-btn:hover {
+  background-color: #eee;
+  cursor: pointer;
+}

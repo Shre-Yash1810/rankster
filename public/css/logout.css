@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(120deg, #ff4b4b, #1e90ff); /* Same as Login */
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
+}
+
+.logout-box {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    width: 300px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.logout-btn {
+    background: #ff416c;
+    color: white;
+}
+
+.stay-btn {
+    background: #5f2c82;
+    color: white;
+}
+
+@media screen and (max-width:480px) {
+    .logout-box {
+        width: 90%;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    button {
+        font-size: 14px;
+    }
+}

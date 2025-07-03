@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Your Profile | Rankster</title>
+  <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+    <h2>&star;Create Your Profile&star;</h2>
+
+  <div class="container">
+
+    <div class="profile-form">
+    <!-- Left side: Photo Upload -->
+    <form action="/set-profile" method="POST" enctype="multipart/form-data">
+
+    <div class="upload-section">
+    <label for="photo-upload" class="custom-upload-btn">Upload Photo</label>
+    <input type="file" id="photo-upload" name="photopath" onchange="previewImage(event)" required hidden>
+    <img id="preview" src="#" alt="Preview" style="display: none;">
+    </div>
+
+
+    <!-- Right side: Profile Form -->
+    <div class="info-section">
+      <form action="/set-profile" method="POST" enctype="multipart/form-data">
+        
+        <div class="field">
+            <label>Username</label>
+          <input type="text" name="username" required placeholder=" ">
+        </div>
+
+        <div class="field">
+            <label>College/University</label>
+          <input type="text" name="college" required placeholder=" ">
+        </div>
+
+        <div class="field">
+            <label>Interest (max 50 chars)</label>
+          <input type="text" name="interest" maxlength="50" required placeholder=" ">
+        </div>
+
+        <div class="checkbox-group">
+            <label for="showInsta">Add Instagram ID</label>
+          <input type="checkbox" id="showInsta" onclick="toggleInsta()">
+          
+        </div>
+
+        <div class="field" id="instaField" style="display: none;">
+            <label>Instagram ID</label>
+          <input type="text" name="instagram" placeholder=" ">
+          
+        </div>
+
+        <button type="submit">Continue</button>
+      </form>
+    </div>
+    </div>
+  </div>
+
+  <script>
+    
+    function previewImage(event) {
+        const reader = new FileReader();
+        reader.onload = function () {
+        const output = document.getElementById('preview');
+        output.src = reader.result;
+        output.style.display = 'block';
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+
+
+    const photoInput = document.getElementById("photoInput");
+    const preview = document.getElementById("preview");
+
+    photoInput.addEventListener("change", function () {
+      const file = photoInput.files[0];
+      if (file) {
+        preview.style.display = "block";
+        preview.src = URL.createObjectURL(file);
+      } else {
+        preview.style.display = "none";
+        preview.src = "";
+      }
+    });
+
+    function toggleInsta() {
+      const instaField = document.getElementById("instaField");
+      instaField.style.display = instaField.style.display === "none" ? "block" : "none";
+    }
+  </script>
+
+</body>
+</html>

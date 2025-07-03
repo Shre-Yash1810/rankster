@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Choose Gender | Rankster</title>
+  <link rel="stylesheet" href="/css/gender.css" />
+</head>
+<body>
+  <form action="/set-gender" method="POST" class="gender-form">
+    <h2>Select Your Gender</h2>
+
+    <div class="gender-options">
+      <label>
+        <input type="radio" name="gender" value="Male" required />
+        <span class="custom-radio">Male</span>
+      </label>
+
+      <label>
+        <input type="radio" name="gender" value="Female" required />
+        <span class="custom-radio">Female</span>
+      </label>
+    </div>
+
+    <button type="submit" class="continue-btn">Continue</button>
+  </form>
+</body>
+</html>

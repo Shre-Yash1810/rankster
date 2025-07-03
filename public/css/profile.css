@@ -1,0 +1,121 @@
+/* public/css/profile.css */
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to left,#0f0050 , #ff003c);
+  margin: 0;
+  padding: 30px;
+}
+h2 {
+    text-align: center;
+    color: white;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  background: rgba(255, 255, 255, 0.08);;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.profile-form {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+
+.upload-section, .info-section {
+  padding: 30px;
+  flex: 1;
+}
+
+.upload-section {
+  background:linear-gradient(to right, #ff003c, #0f0050) ;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#preview {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+}
+
+.custom-upload-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: rgba(255, 255, 255, 0.08);
+  columns: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.upload-section label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.upload-section input[type="file"] {
+  margin-top: 10px;
+  padding: 10px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.info-section label {
+  display: block;
+  margin: 15px 0 5px;
+  font-weight: 500;
+}
+
+.info-section input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 16px;
+}
+
+.info-section input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+button[type="submit"] {
+  margin-top: 30px;
+  padding: 12px 20px;
+  font-size: 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .profile-form {
+    flex-direction: column;
+  }
+}

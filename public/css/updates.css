@@ -1,0 +1,20 @@
+body {
+    background: linear-gradient(to right, #ff003c, #0f0050);
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 70px;
+    font-size: 50px;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-top: 150px;
+}

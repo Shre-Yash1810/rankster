@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <link rel="stylesheet" href="/css/logout.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>RANKSTER</h1>
+        <div class="logout-box">
+            <h2>Are you sure you want to logout?</h2>
+            <button class="logout-btn" onclick="logout()">Yes, Logout</button>
+            <button class="stay-btn" onclick="stay()">No, Stay</button>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            window.location.href = "/"; // Redirect to homepage
+        }
+
+        function stay() {
+            window.location.href = "/vote";
+        }
+    </script>
+
+</body>
+</html>
